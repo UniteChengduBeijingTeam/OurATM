@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chat.common.dao.UserRelationMapper">
+
+	<insert id="saveUserRelation" parameterType="com.chat.bean.User_Relation">
+		INSERT INTO user_relation (user_id,relation_user_id,relation,create_time) VALUES
+		(#{user_id},#{relation_user_id},#{relation},NOW())
+	</insert>
+	<update id="updateUserRelation" parameterType="User_Relation">
+		
+			UPDATE user_relation SET
+			<if test="#{user_id}!=null">
+				user_id=#{user_id},
+			</if>
+			<if test="#{relation_user_id}!=null">
+				relation_user_id=#{relation_user_id},
+			</if>
+			<if test="#{relation}!=null">
+				relation=#{relation}
+			</if>
+			WHERE id=#{id}
+
+	</update>
+</mapper>
